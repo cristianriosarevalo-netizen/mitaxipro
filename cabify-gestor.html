@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>MiTaxi Pro</title>
+<meta name="application-name" content="MiTaxiPro">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="MiTaxiPro">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0d0f14">
+<meta name="description" content="Gestor de ganancias y gastos para conductores Cabify">
+<link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIk1pVGF4aSBQcm8g4oCUIEdlc3RvciBDYWJpZnkiLAogICJzaG9ydF9uYW1lIjogIk1pVGF4aVBybyIsCiAgImRlc2NyaXB0aW9uIjogIkdlc3RvciBkZSBnYW5hbmNpYXMgeSBnYXN0b3MgcGFyYSBjb25kdWN0b3JlcyBDYWJpZnkiLAogICJzdGFydF91cmwiOiAiLiIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzBkMGYxNCIsCiAgInRoZW1lX2NvbG9yIjogIiM3YzVjZmMiLAogICJvcmllbnRhdGlvbiI6ICJwb3J0cmFpdCIsCiAgImljb25zIjogW3sic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIZHBaSFJvUFNJMU1USWlJR2hsYVdkb2REMGlOVEV5SWlCMmFXVjNRbTk0UFNJd0lEQWdOVEV5SURVeE1pSStDaUFnUEhKbFkzUWdkMmxrZEdnOUlqVXhNaUlnYUdWcFoyaDBQU0kxTVRJaUlISjRQU0k0TUNJZ1ptbHNiRDBpSXpCa01HWXhOQ0l2UGdvZ0lEeHlaV04wSUhnOUlqUXdJaUI1UFNJME1DSWdkMmxrZEdnOUlqUXpNaUlnYUdWcFoyaDBQU0kwTXpJaUlISjRQU0kyTUNJZ1ptbHNiRDBpSXpGbE1qRXpNQ0l2UGdvZ0lEeDBaWGgwSUhnOUlqSTFOaUlnZVQwaU1qQXdJaUJtYjI1MExXWmhiV2xzZVQwaVFYSnBZV3dpSUdadmJuUXRjMmw2WlQwaU1UWXdJaUJtYjI1MExYZGxhV2RvZEQwaVltOXNaQ0lnWm1sc2JEMGlJemRqTldObVl5SWdkR1Y0ZEMxaGJtTm9iM0k5SW0xcFpHUnNaU0krVFdrOEwzUmxlSFErQ2lBZ1BIUmxlSFFnZUQwaU1qVTJJaUI1UFNJek5qQWlJR1p2Ym5RdFptRnRhV3g1UFNKQmNtbGhiQ0lnWm05dWRDMXphWHBsUFNJeE16QWlJR1p2Ym5RdGQyVnBaMmgwUFNKaWIyeGtJaUJtYVd4c1BTSWpaakJtTW1abUlpQjBaWGgwTFdGdVkyaHZjajBpYldsa1pHeGxJajVVWVhocFBDOTBaWGgwUGdvZ0lEeDBaWGgwSUhnOUlqSTFOaUlnZVQwaU5EY3dJaUJtYjI1MExXWmhiV2xzZVQwaVFYSnBZV3dpSUdadmJuUXRjMmw2WlQwaU9EQWlJR1p2Ym5RdGQyVnBaMmgwUFNKaWIyeGtJaUJtYVd4c1BTSWpabU0xWXpka0lpQjBaWGgwTFdGdVkyaHZjajBpYldsa1pHeGxJajVRVWs4OEwzUmxlSFErQ2p3dmMzWm5QZz09IiwgInNpemVzIjogImFueSIsICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiLCAicHVycG9zZSI6ICJhbnkgbWFza2FibGUifV0KfQ==">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+CiAgPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSI4MCIgZmlsbD0iIzBkMGYxNCIvPgogIDxyZWN0IHg9IjQwIiB5PSI0MCIgd2lkdGg9IjQzMiIgaGVpZ2h0PSI0MzIiIHJ4PSI2MCIgZmlsbD0iIzFlMjEzMCIvPgogIDx0ZXh0IHg9IjI1NiIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzdjNWNmYyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TWk8L3RleHQ+CiAgPHRleHQgeD0iMjU2IiB5PSIzNjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMzAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZjBmMmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5UYXhpPC90ZXh0PgogIDx0ZXh0IHg9IjI1NiIgeT0iNDcwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iODAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZmM1YzdkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QUk88L3RleHQ+Cjwvc3ZnPg==">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+:root {
+  --bg: #0d0f14;
+  --surface: #161920;
+  --card: #1e2130;
+  --card2: #252a3a;
+  --accent: #7c5cfc;
+  --accent2: #fc5c7d;
+  --green: #2ecc71;
+  --yellow: #f39c12;
+  --red: #e74c3c;
+  --text: #f0f2ff;
+  --muted: #8890b0;
+  --border: #2a2f45;
+  --radius: 16px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; padding-bottom: 90px; }
+
+.header {
+  background: linear-gradient(135deg, #1a1040 0%, #0d0f14 100%);
+  padding: 20px 16px 14px;
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 100;
+}
+.header-top { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; }
+.logo span { color: var(--accent); }
+.km-badge {
+  background: var(--card2); border: 1px solid var(--accent);
+  padding: 4px 12px; border-radius: 20px; font-size: 12px; color: var(--accent); font-weight: 600;
+}
+.date-line { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+.nav {
+  display: flex; background: var(--surface); border-bottom: 1px solid var(--border);
+  overflow-x: auto; scrollbar-width: none; position: sticky; top: 73px; z-index: 99;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav-btn {
+  flex: 0 0 auto; padding: 12px 16px; background: none; border: none;
+  color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+  cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.2s;
+}
+.nav-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+.page { display: none; padding: 16px; }
+.page.active { display: block; }
+
+.card { background: var(--card); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; border: 1px solid var(--border); }
+.card-title { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.summary-card { background: var(--card); border-radius: 14px; padding: 14px 12px; border: 1px solid var(--border); }
+.summary-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.summary-value { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; }
+.summary-value.green { color: var(--green); }
+.summary-value.yellow { color: var(--yellow); }
+.summary-value.purple { color: var(--accent); }
+.summary-value.red { color: var(--red); }
+.summary-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+.form-group { margin-bottom: 14px; }
+.form-label { font-size: 12px; color: var(--muted); margin-bottom: 6px; display: block; font-weight: 500; }
+.form-input, .form-select {
+  width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px 14px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; outline: none; transition: border-color 0.2s;
+}
+.form-input:focus, .form-select:focus { border-color: var(--accent); }
+.form-select option { background: var(--card); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.btn { width: 100%; padding: 14px; border-radius: 12px; border: none; font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.15s; letter-spacing: 0.02em; }
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: var(--accent); color: white; }
+.btn-green { background: var(--green); color: #0a1a10; }
+.btn-outline { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+.btn-sm { padding: 8px 14px; font-size: 12px; border-radius: 8px; width: auto; }
+.btn-danger { background: transparent; border: 1px solid var(--red); color: var(--red); font-size: 13px; padding: 6px 12px; border-radius: 8px; width: auto; cursor: pointer; }
+.btn-edit { background: transparent; border: 1px solid var(--accent); color: var(--accent); font-size: 13px; padding: 6px 12px; border-radius: 8px; width: auto; cursor: pointer; }
+
+.progress-wrap { margin: 8px 0; }
+.progress-label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; }
+.progress-bar-bg { background: var(--bg); border-radius: 20px; height: 8px; overflow: hidden; }
+.progress-bar { height: 100%; border-radius: 20px; transition: width 0.4s; }
+
+.list-item { display: flex; justify-content: space-between; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--border); gap: 8px; }
+.list-item:last-child { border-bottom: none; }
+.list-item-left { flex: 1; }
+.list-item-title { font-size: 14px; font-weight: 500; }
+.list-item-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.list-item-right { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.list-item-amount { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; }
+.list-item-actions { display: flex; gap: 6px; }
+
+.mant-item { background: var(--card2); border-radius: 12px; padding: 14px; margin-bottom: 10px; border-left: 3px solid var(--border); }
+.mant-item.ok { border-left-color: var(--green); }
+.mant-item.warn { border-left-color: var(--yellow); }
+.mant-item.urgent { border-left-color: var(--red); }
+.mant-header { display: flex; justify-content: space-between; align-items: flex-start; }
+.mant-name { font-weight: 600; font-size: 14px; }
+.mant-km { font-size: 12px; color: var(--muted); margin-top: 3px; }
+.mant-badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 600; }
+.badge-ok { background: #1a3d2b; color: var(--green); }
+.badge-warn { background: #3d2a0a; color: var(--yellow); }
+.badge-urgent { background: #3d1010; color: var(--red); }
+
+.empty { text-align: center; padding: 30px 20px; color: var(--muted); }
+.empty-icon { font-size: 36px; margin-bottom: 10px; }
+
+.export-bar { position: fixed; bottom: 16px; left: 16px; right: 16px; z-index: 200; }
+.export-btn {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  color: white; padding: 14px; border-radius: 14px; border: none; font-family: 'Syne', sans-serif;
+  font-size: 14px; font-weight: 700; width: 100%; cursor: pointer;
+  box-shadow: 0 4px 20px rgba(124,92,252,0.4); display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+
+.toast { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--green); color: #0a1a10; padding: 10px 24px; border-radius: 30px; font-weight: 700; font-size: 14px; opacity: 0; transition: all 0.3s; z-index: 999; white-space: nowrap; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+.section-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.divider { height: 1px; background: var(--border); margin: 14px 0; }
+
+/* MODAL EDICIÓN */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75);
+  z-index: 500; align-items: flex-end; justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: var(--card); border-radius: 20px 20px 0 0; padding: 20px 16px 36px;
+  width: 100%; max-height: 85vh; overflow-y: auto;
+}
+.modal-title { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800; margin-bottom: 16px; display: flex; justify-content: space-between; }
+.modal-close { background: var(--card2); border: none; color: var(--muted); border-radius: 50%; width: 30px; height: 30px; font-size: 16px; cursor: pointer; }
+
+/* BACKUP SECTION */
+.backup-row { display: flex; gap: 8px; }
+.backup-btn { flex: 1; padding: 12px; border-radius: 12px; border: 1px solid var(--border); background: var(--card2); color: var(--text); font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; text-align: center; }
+.backup-btn.save { border-color: var(--green); color: var(--green); }
+.backup-btn.load { border-color: var(--yellow); color: var(--yellow); }
+
+.tag-extra-box {
+  background: var(--card2); border: 1px dashed var(--red);
+  border-radius: 12px; padding: 12px 14px; margin-bottom: 14px;
+}
+.tag-extra-label { font-size: 12px; color: var(--red); font-weight: 600; margin-bottom: 6px; display: block; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div class="logo">Mi<span>Taxi</span>Pro</div>
+    <div class="km-badge" id="km-badge-header">🚗 202.512 km</div>
+  </div>
+  <div class="date-line" id="dateDisplay"></div>
+</div>
+
+<nav class="nav">
+  <button class="nav-btn active" onclick="showPage('resumen',this)">📊 Resumen</button>
+  <button class="nav-btn" onclick="showPage('jornada',this)">💼 Jornada</button>
+  <button class="nav-btn" onclick="showPage('combustible',this)">⛽ Bencina</button>
+  <button class="nav-btn" onclick="showPage('mantencion',this)">🔧 Mantención</button>
+  <button class="nav-btn" onclick="showPage('aportes',this)">💰 Aportes</button>
+  <button class="nav-btn" onclick="showPage('historial',this)">📋 Historial</button>
+</nav>
+
+<!-- ===== RESUMEN ===== -->
+<div class="page active" id="page-resumen">
+  <div class="section-title">📊 Este mes</div>
+  <div class="summary-grid">
+    <div class="summary-card">
+      <div class="summary-label">Ganancias brutas</div>
+      <div class="summary-value green" id="res-ganancia">$0</div>
+      <div class="summary-sub">suma del mes</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-label">🛣️ Peajes (apartar)</div>
+      <div class="summary-value yellow" id="res-tag">$0</div>
+      <div class="summary-sub">no es ganancia tuya</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-label">Combustible</div>
+      <div class="summary-value red" id="res-comb">$0</div>
+      <div class="summary-sub">mes actual</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-label">Neto real</div>
+      <div class="summary-value purple" id="res-neto">$0</div>
+      <div class="summary-sub">ganancias − combustible</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">💰 Extras del mes</div>
+    <div class="summary-grid" style="margin-bottom:0">
+      <div class="summary-card">
+        <div class="summary-label">Propinas</div>
+        <div class="summary-value green" id="res-propinas">$0</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-label">Extras y suplementos</div>
+        <div class="summary-value yellow" id="res-zona">$0</div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">⛽ Rendimiento combustible</div>
+    <div id="res-rendimiento" style="text-align:center; padding:10px 0">
+      <div style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--accent)">—</div>
+      <div style="color:var(--muted);font-size:13px">km/litro promedio</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px">Registra cargas de combustible para calcular</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">🔧 Fondo de mantención</div>
+    <div id="res-fondo"></div>
+  </div>
+  <div class="card" style="border-color:var(--accent);background:linear-gradient(135deg,#1a1040,#1e2130)">
+    <div class="card-title">💵 Desglose final del mes</div>
+    <div class="list-item">
+      <div class="list-item-left"><div class="list-item-title">Neto (gan. − comb. − peajes propios)</div></div>
+      <div class="list-item-right"><div class="list-item-amount green" id="res-neto2">$0</div></div>
+    </div>
+    <div class="list-item">
+      <div class="list-item-left"><div class="list-item-title">🔧 Ahorro mantención (apartar)</div></div>
+      <div class="list-item-right"><div class="list-item-amount yellow" id="res-ahorro-mant">$0</div></div>
+    </div>
+    <div class="list-item">
+      <div class="list-item-left">
+        <div class="list-item-title">🏠 Arriendo taxi</div>
+        <div class="list-item-sub">pagado este mes</div>
+      </div>
+      <div class="list-item-right"><div class="list-item-amount yellow" id="res-arriendo">$0</div></div>
+    </div>
+    <div class="list-item">
+      <div class="list-item-left">
+        <div class="list-item-title">🛒 Gastos operacionales</div>
+        <div class="list-item-sub">agua, comida, dulces — fondo a reponer</div>
+      </div>
+      <div class="list-item-right"><div class="list-item-amount" style="color:#3498db" id="res-gastos">$0</div></div>
+    </div>
+    <div class="list-item" style="border-bottom:none">
+      <div class="list-item-left">
+        <div class="list-item-title" style="font-size:16px;font-weight:700">✅ Lo que es tuyo</div>
+        <div class="list-item-sub">Neto − ahorro mantención</div>
+      </div>
+      <div class="list-item-right"><div class="list-item-amount purple" style="font-size:22px" id="res-tuyo">$0</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📅 Estadísticas del mes</div>
+    <div class="list-item">
+      <div class="list-item-left"><div class="list-item-title">Días trabajados</div></div>
+      <div class="list-item-right"><div class="list-item-amount purple" id="res-dias">0</div></div>
+    </div>
+    <div class="list-item">
+      <div class="list-item-left"><div class="list-item-title">Promedio diario neto</div></div>
+      <div class="list-item-right"><div class="list-item-amount green" id="res-promedio">$0</div></div>
+    </div>
+    <div class="list-item" style="border-bottom:none">
+      <div class="list-item-left"><div class="list-item-title">KM recorridos este mes</div></div>
+      <div class="list-item-right"><div class="list-item-amount" id="res-km">0 km</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== JORNADA ===== -->
+<div class="page" id="page-jornada">
+  <div class="section-title">💼 Registrar jornada</div>
+  <div class="card">
+    <div class="form-group">
+      <label class="form-label">Fecha</label>
+      <input type="date" class="form-input" id="j-fecha">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">KM inicio</label>
+        <input type="number" class="form-input" id="j-km-ini" placeholder="202512">
+      </div>
+      <div class="form-group">
+        <label class="form-label">KM fin</label>
+        <input type="number" class="form-input" id="j-km-fin" placeholder="204300">
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="card-title">Datos de la App Cabify</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">💵 Ganancia del día</label>
+        <input type="number" class="form-input" id="j-ganancia" placeholder="0">
+      </div>
+      <div class="form-group">
+        <label class="form-label">🤝 Propinas</label>
+        <input type="number" class="form-input" id="j-propinas" placeholder="0">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">⚡ Extras y suplementos</label>
+        <input type="number" class="form-input" id="j-zona" placeholder="0">
+      </div>
+      <div class="form-group">
+        <label class="form-label">🏷️ Categoría del día</label>
+        <select class="form-select" id="j-categoria">
+          <option value="taxi">Taxi básico</option>
+          <option value="fast">Fast</option>
+          <option value="corp">Corporativo</option>
+          <option value="taxi_corp">Taxi corporativo</option>
+          <option value="mixto">Mixto</option>
+        </select>
+      </div>
+    </div>
+    <!-- PEAJES -->
+    <div class="tag-extra-box" style="border-color:var(--yellow); margin-bottom:10px;">
+      <span class="tag-extra-label" style="color:var(--yellow);">🟡 Peajes Cabify (te los pagan, apártalos)</span>
+      <input type="number" class="form-input" id="j-tag-cabify" placeholder="Ej: 24531">
+    </div>
+    <div class="tag-extra-box" style="border-color:var(--red); margin-bottom:14px;">
+      <span class="tag-extra-label" style="color:var(--red);">🔴 Peajes propios (los pagué yo — se restan)</span>
+      <input type="number" class="form-input" id="j-tag-propio" placeholder="Ej: 1500">
+    </div>
+    <div class="tag-extra-box" style="border-color:#3498db; margin-bottom:14px;">
+      <span class="tag-extra-label" style="color:#3498db;">🛒 Gastos del día (agua, comida, dulces)</span>
+      <input type="number" class="form-input" id="j-gastos" placeholder="Ej: 5000 — se restan del neto y se acumulan">
+    </div>
+    <div class="form-group">
+      <label class="form-label">📝 Notas (opcional)</label>
+      <input type="text" class="form-input" id="j-notas" placeholder="Feriado, lluvia, etc.">
+    </div>
+    <button class="btn btn-primary" onclick="guardarJornada()">✅ Guardar jornada</button>
+  </div>
+</div>
+
+<!-- ===== COMBUSTIBLE ===== -->
+<div class="page" id="page-combustible">
+  <div class="section-title">⛽ Registrar carga</div>
+  <div class="card">
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Fecha</label>
+        <input type="date" class="form-input" id="c-fecha">
+      </div>
+      <div class="form-group">
+        <label class="form-label">KM actual</label>
+        <input type="number" class="form-input" id="c-km" placeholder="204500">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Litros cargados</label>
+        <input type="number" class="form-input" id="c-litros" placeholder="40" step="0.1">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Precio total ($)</label>
+        <input type="number" class="form-input" id="c-precio" placeholder="45000">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Estación</label>
+      <input type="text" class="form-input" id="c-estacion" placeholder="COPEC, Shell, Petrobras...">
+    </div>
+    <button class="btn btn-green" onclick="guardarCombustible()">⛽ Guardar carga</button>
+  </div>
+  <div class="section-title" style="margin-top:4px">📊 Historial de cargas</div>
+  <div class="card" id="comb-lista-card">
+    <div id="comb-lista"><div class="empty"><div class="empty-icon">⛽</div>Sin cargas registradas</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Rendimiento acumulado</div>
+    <div style="text-align:center;padding:10px 0">
+      <div style="font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--accent)" id="comb-kmL">—</div>
+      <div style="color:var(--muted);font-size:14px">km / litro</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:8px">Diesel 1.6 HDi: 10–13 ciudad · 14–18 ruta</div>
+    </div>
+    <div class="divider"></div>
+    <div class="list-item">
+      <div class="list-item-left"><div class="list-item-title">Costo por km</div></div>
+      <div class="list-item-right"><div class="list-item-amount" id="comb-cpm">—</div></div>
+    </div>
+    <div class="list-item" style="border-bottom:none">
+      <div class="list-item-left"><div class="list-item-title">Total gastado combustible</div></div>
+      <div class="list-item-right"><div class="list-item-amount red" id="comb-total">$0</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MANTENCIÓN ===== -->
+<div class="page" id="page-mantencion">
+  <div class="section-title">🔧 Estado mantenciones</div>
+  <div class="card" style="background:linear-gradient(135deg,#1a1040,#1e2130);border-color:var(--accent)">
+    <div class="card-title">KM actual del vehículo</div>
+    <div class="form-row">
+      <div class="form-group" style="margin-bottom:0">
+        <input type="number" class="form-input" id="mant-km-actual" placeholder="202512" value="202512">
+      </div>
+      <button class="btn btn-primary btn-sm" style="height:46px" onclick="actualizarKM()">Actualizar</button>
+    </div>
+    <div style="font-size:12px;color:var(--muted);margin-top:8px">Actualiza al inicio de cada semana o al cargar bencina</div>
+  </div>
+  <div id="mant-lista"></div>
+
+  <div class="card">
+    <div class="card-title">📝 Registrar mantención realizada</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Tipo</label>
+        <select class="form-select" id="mant-tipo">
+          <option value="aceite">Aceite + filtros</option>
+          <option value="frenos_p">Pastillas freno</option>
+          <option value="frenos_d">Discos freno</option>
+          <option value="amortiguadores">Amortiguadores</option>
+          <option value="neumaticos">Neumáticos</option>
+          <option value="distribucion">Distribución</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">KM realizado</label>
+        <input type="number" class="form-input" id="mant-km-realizado" placeholder="204000">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Costo ($)</label>
+        <input type="number" class="form-input" id="mant-costo" placeholder="80000">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Fecha</label>
+        <input type="date" class="form-input" id="mant-fecha">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Taller / Notas</label>
+      <input type="text" class="form-input" id="mant-notas" placeholder="Mecánico Juan, calle X">
+    </div>
+    <button class="btn btn-green" onclick="registrarMantencion()">✅ Registrar mantención</button>
+  </div>
+</div>
+
+<!-- ===== APORTES SEMANALES ===== -->
+<div class="page" id="page-aportes">
+  <div class="section-title">💰 Aportes semanales</div>
+
+  <div class="card" style="border-color:var(--accent)">
+    <div style="font-size:13px;color:var(--muted);margin-bottom:14px">
+      Registra cada semana cuánto apartaste para mantención y arriendo. Tú decides el monto según cómo te fue.
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">📅 Semana (fecha inicio)</label>
+      <input type="date" class="form-input" id="ap-fecha">
+    </div>
+
+    <div class="tag-extra-box" style="border-color:var(--accent);margin-bottom:10px">
+      <span class="tag-extra-label" style="color:var(--accent)">🔧 Aporte mantención esta semana</span>
+      <input type="number" class="form-input" id="ap-mantencion" placeholder="Ej: 32000">
+      <div style="font-size:11px;color:var(--muted);margin-top:6px">Meta mensual: $128.000 (≈ $32.000/sem)</div>
+    </div>
+
+    <div class="tag-extra-box" style="border-color:var(--yellow);margin-bottom:14px">
+      <span class="tag-extra-label" style="color:var(--yellow)">🏠 Arriendo taxi esta semana</span>
+      <input type="number" class="form-input" id="ap-arriendo" placeholder="Ej: 100000">
+      <div style="font-size:11px;color:var(--muted);margin-top:6px">Meta semanal: $100.000</div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">📝 Notas (opcional)</label>
+      <input type="text" class="form-input" id="ap-notas" placeholder="Semana buena, puse más, etc.">
+    </div>
+    <button class="btn btn-primary" onclick="guardarAporte()">✅ Registrar aporte</button>
+  </div>
+
+  <div class="section-title" style="margin-top:4px">📊 Resumen aportes este mes</div>
+  <div class="card">
+    <div class="list-item">
+      <div class="list-item-left">
+        <div class="list-item-title">🔧 Fondo mantención acumulado</div>
+        <div class="list-item-sub">Meta mes: $128.000</div>
+      </div>
+      <div class="list-item-right">
+        <div class="list-item-amount" style="color:var(--accent)" id="ap-fondo-mant">$0</div>
+      </div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-bar-bg"><div class="progress-bar" id="ap-bar-mant" style="width:0%;background:var(--accent)"></div></div>
+    </div>
+    <div class="divider"></div>
+    <div class="list-item">
+      <div class="list-item-left">
+        <div class="list-item-title">🏠 Arriendo pagado este mes</div>
+        <div class="list-item-sub">Meta mes: $400.000 (4 sem × $100.000)</div>
+      </div>
+      <div class="list-item-right">
+        <div class="list-item-amount yellow" id="ap-fondo-arriendo">$0</div>
+      </div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-bar-bg"><div class="progress-bar" id="ap-bar-arriendo" style="width:0%;background:var(--yellow)"></div></div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:4px">📋 Historial aportes</div>
+  <div class="card">
+    <div id="ap-lista"><div class="empty"><div class="empty-icon">💰</div>Sin aportes registrados</div></div>
+  </div>
+</div>
+
+<!-- ===== HISTORIAL ===== -->
+<div class="page" id="page-historial">
+  <div class="section-title">📋 Historial completo</div>
+  <div class="card">
+    <div class="card-title">Filtrar por mes</div>
+    <input type="month" class="form-input" id="hist-mes">
+  </div>
+  <div class="card">
+    <div class="card-title">🗓️ Jornadas</div>
+    <div id="hist-jornadas"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">🔧 Mantenciones realizadas</div>
+    <div id="hist-mantenciones"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">⛽ Cargas de combustible</div>
+    <div id="hist-combustible"></div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">🔒 Respaldo de datos</div>
+  <div class="card" style="border-color:var(--green)">
+    <div style="font-size:13px;color:var(--muted);margin-bottom:12px">
+      💡 <strong style="color:var(--text)">Guarda un respaldo</strong> en Google Drive, WhatsApp o donde quieras. Si se borra el historial del navegador, lo recuperas con un clic.
+    </div>
+    <div class="backup-row">
+      <button class="backup-btn save" onclick="respaldarDatos()">⬇️ Guardar respaldo</button>
+      <label class="backup-btn load" style="cursor:pointer">
+        ⬆️ Restaurar datos
+        <input type="file" accept=".json" id="restore-input" style="display:none" onchange="restaurarDatos(event)">
+      </label>
+    </div>
+    <div style="font-size:11px;color:var(--muted);margin-top:10px;text-align:center">
+      El archivo se llama <strong>mitaxipro_respaldo.json</strong> — guárdalo en Drive o envíatelo por WhatsApp
+    </div>
+  </div>
+
+  <div style="margin-top:12px">
+    <button class="btn btn-outline" onclick="limpiarTodo()" style="color:var(--red);border-color:var(--red)">🗑️ Borrar todos los datos</button>
+  </div>
+</div>
+
+<!-- EXPORT BAR -->
+<div class="export-bar">
+  <button class="export-btn" onclick="exportarExcel()">📊 Exportar Excel completo</button>
+</div>
+
+<!-- MODAL EDICIÓN JORNADA -->
+<div class="modal-overlay" id="modal-jornada">
+  <div class="modal-box">
+    <div class="modal-title">
+      ✏️ Editar jornada
+      <button class="modal-close" onclick="cerrarModal('modal-jornada')">✕</button>
+    </div>
+    <input type="hidden" id="edit-j-idx">
+    <div class="form-group">
+      <label class="form-label">Fecha</label>
+      <input type="date" class="form-input" id="edit-j-fecha">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">KM inicio</label>
+        <input type="number" class="form-input" id="edit-j-km-ini">
+      </div>
+      <div class="form-group">
+        <label class="form-label">KM fin</label>
+        <input type="number" class="form-input" id="edit-j-km-fin">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">💵 Ganancias</label>
+        <input type="number" class="form-input" id="edit-j-ganancia">
+      </div>
+      <div class="form-group">
+        <label class="form-label">🤝 Propinas</label>
+        <input type="number" class="form-input" id="edit-j-propinas">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">⚡ Extras y suplementos</label>
+        <input type="number" class="form-input" id="edit-j-zona">
+      </div>
+      <div class="form-group">
+        <label class="form-label">🟡 Peajes Cabify</label>
+        <input type="number" class="form-input" id="edit-j-tag-cabify">
+      </div>
+      <div class="form-group">
+        <label class="form-label">🔴 Peajes propios (se restan)</label>
+        <input type="number" class="form-input" id="edit-j-tag-propio">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Categoría</label>
+      <select class="form-select" id="edit-j-categoria">
+        <option value="taxi">Taxi básico</option>
+        <option value="fast">Fast</option>
+        <option value="corp">Corporativo</option>
+        <option value="taxi_corp">Taxi corporativo</option>
+        <option value="mixto">Mixto</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">🛒 Gastos del día</label>
+      <input type="number" class="form-input" id="edit-j-gastos">
+    </div>
+    <div class="form-group">
+      <label class="form-label">📝 Notas</label>
+      <input type="text" class="form-input" id="edit-j-notas">
+    </div>
+    <button class="btn btn-primary" onclick="guardarEdicionJornada()">💾 Guardar cambios</button>
+  </div>
+</div>
+
+<!-- MODAL EDICIÓN COMBUSTIBLE -->
+<div class="modal-overlay" id="modal-comb">
+  <div class="modal-box">
+    <div class="modal-title">
+      ✏️ Editar carga
+      <button class="modal-close" onclick="cerrarModal('modal-comb')">✕</button>
+    </div>
+    <input type="hidden" id="edit-c-idx">
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Fecha</label>
+        <input type="date" class="form-input" id="edit-c-fecha">
+      </div>
+      <div class="form-group">
+        <label class="form-label">KM actual</label>
+        <input type="number" class="form-input" id="edit-c-km">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Litros</label>
+        <input type="number" class="form-input" id="edit-c-litros" step="0.1">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Precio total ($)</label>
+        <input type="number" class="form-input" id="edit-c-precio">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Estación</label>
+      <input type="text" class="form-input" id="edit-c-estacion">
+    </div>
+    <button class="btn btn-primary" onclick="guardarEdicionComb()">💾 Guardar cambios</button>
+  </div>
+</div>
+
+<!-- MODAL EDICIÓN MANTENCIÓN -->
+<div class="modal-overlay" id="modal-mant">
+  <div class="modal-box">
+    <div class="modal-title">
+      ✏️ Editar mantención
+      <button class="modal-close" onclick="cerrarModal('modal-mant')">✕</button>
+    </div>
+    <input type="hidden" id="edit-m-idx">
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Tipo</label>
+        <select class="form-select" id="edit-m-tipo">
+          <option value="aceite">Aceite + filtros</option>
+          <option value="frenos_p">Pastillas freno</option>
+          <option value="frenos_d">Discos freno</option>
+          <option value="amortiguadores">Amortiguadores</option>
+          <option value="neumaticos">Neumáticos</option>
+          <option value="distribucion">Distribución</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">KM realizado</label>
+        <input type="number" class="form-input" id="edit-m-km">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Costo ($)</label>
+        <input type="number" class="form-input" id="edit-m-costo">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Fecha</label>
+        <input type="date" class="form-input" id="edit-m-fecha">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Notas</label>
+      <input type="text" class="form-input" id="edit-m-notas">
+    </div>
+    <button class="btn btn-primary" onclick="guardarEdicionMant()">💾 Guardar cambios</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ========== ESTADO ==========
+let datos = cargarDatos();
+
+function cargarDatos() {
+  const raw = localStorage.getItem('mitaxipro');
+  const d = raw ? JSON.parse(raw) : {};
+  if (!d.jornadas) d.jornadas = [];
+  if (!d.combustible) d.combustible = [];
+  if (!d.mantenciones) d.mantenciones = [];
+  if (!d.config) d.config = { kmActual: 202512, fondoActual: 0 };
+  if (d.config.fondoActual === undefined) d.config.fondoActual = 0;
+  return d;
+}
+
+function guardar() {
+  localStorage.setItem('mitaxipro', JSON.stringify(datos));
+}
+
+const MANT_BASE = [
+  { id:'aceite', nombre:'Aceite + Filtros', intervalo:10000, costo:90000, descripcion:'Aceite full sintético 5W30/5W40', ultimoKm:201000 },
+  { id:'frenos_p', nombre:'Pastillas de freno', intervalo:35000, costo:80000, descripcion:'Pastillas delanteras (uso intenso ciudad)', ultimoKm:null },
+  { id:'frenos_d', nombre:'Discos de freno', intervalo:70000, costo:130000, descripcion:'Rectificación o reemplazo de discos', ultimoKm:null },
+  { id:'amortiguadores', nombre:'Amortiguadores', intervalo:140000, costo:380000, descripcion:'Reemplazo completo 4 amortiguadores', ultimoKm:null },
+  { id:'neumaticos', nombre:'Neumáticos (4)', intervalo:50000, costo:230000, descripcion:'195/65 R15 gama media Falken/Kumho', ultimoKm:null },
+  { id:'distribucion', nombre:'Correa distribución', intervalo:120000, costo:200000, descripcion:'Kit distribución + tensor + bomba agua', ultimoKm:120000 },
+];
+
+// Aplicar mantenciones registradas
+function refrescarMantBase() {
+  MANT_BASE.forEach(b => b.ultimoKmReal = null);
+  datos.mantenciones.forEach(m => {
+    const b = MANT_BASE.find(x => x.id === m.tipo);
+    if (b && (!b.ultimoKmReal || m.kmRealizado > b.ultimoKmReal)) b.ultimoKmReal = m.kmRealizado;
+  });
+}
+if (!datos.aportes) datos.aportes = [];
+// Recalcular fondo desde aportes reales para evitar valores residuales
+datos.config.fondoActual = datos.aportes.reduce((s,a)=>s+(a.mantencion||0),0);
+refrescarMantBase();
+
+// ========== UI HELPERS ==========
+function toast(msg, color='var(--green)') {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.style.background = color;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+function cerrarModal(id) { document.getElementById(id).classList.remove('open'); }
+function abrirModal(id) { document.getElementById(id).classList.add('open'); }
+
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  if (btn) btn.classList.add('active');
+  if (id==='resumen') renderResumen();
+  if (id==='aportes') { renderAportes(); document.getElementById('ap-fecha').value=new Date().toISOString().split('T')[0]; }
+  if (id==='combustible') renderCombLista();
+  if (id==='mantencion') renderMantenciones();
+  if (id==='historial') renderHistorial();
+}
+
+// ========== INIT ==========
+document.getElementById('dateDisplay').textContent = new Date().toLocaleDateString('es-CL',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+actualizarBadgeKM();
+
+const hoy = new Date().toISOString().split('T')[0];
+['j-fecha','c-fecha','mant-fecha'].forEach(id => { const e=document.getElementById(id); if(e) e.value=hoy; });
+document.getElementById('hist-mes').value = new Date().toISOString().slice(0,7);
+document.getElementById('hist-mes').addEventListener('change', renderHistorial);
+document.getElementById('mant-km-actual').value = datos.config.kmActual;
+// Fondo manejado desde pestaña Aportes
+
+renderResumen();
+renderMantenciones();
+
+function actualizarBadgeKM() {
+  document.getElementById('km-badge-header').textContent = '🚗 ' + (datos.config.kmActual||204000).toLocaleString('es-CL') + ' km';
+}
+
+// ========== JORNADA ==========
+function guardarJornada() {
+  const j = {
+    fecha: document.getElementById('j-fecha').value,
+    kmIni: parseFloat(document.getElementById('j-km-ini').value)||0,
+    kmFin: parseFloat(document.getElementById('j-km-fin').value)||0,
+    ganancia: parseFloat(document.getElementById('j-ganancia').value)||0,
+    propinas: parseFloat(document.getElementById('j-propinas').value)||0,
+    zona: parseFloat(document.getElementById('j-zona').value)||0,
+    tagCabify: parseFloat(document.getElementById('j-tag-cabify').value)||0,
+    tagPropio: parseFloat(document.getElementById('j-tag-propio').value)||0,
+    gastos: parseFloat(document.getElementById('j-gastos').value)||0,
+    categoria: document.getElementById('j-categoria').value,
+    notas: document.getElementById('j-notas').value,
+  };
+  if (!j.fecha||!j.ganancia) { toast('Completa fecha y ganancias','var(--red)'); return; }
+  j.kmRecorridos = j.kmFin > j.kmIni ? j.kmFin - j.kmIni : 0;
+  j.totalBruto = j.ganancia + j.propinas + j.zona;
+  if (j.kmFin > datos.config.kmActual) { datos.config.kmActual = j.kmFin; actualizarBadgeKM(); }
+  // El fondo semanal se registra manualmente en Mantención — aquí no se acumula automático
+  datos.jornadas.push(j);
+  guardar();
+  toast('✅ Jornada guardada');
+  ['j-km-ini','j-km-fin','j-ganancia','j-propinas','j-zona','j-tag-cabify','j-tag-propio','j-gastos','j-notas'].forEach(id => document.getElementById(id).value='');
+}
+
+// ========== EDITAR JORNADA ==========
+function editarJornada(idx) {
+  const j = datos.jornadas[idx];
+  document.getElementById('edit-j-idx').value = idx;
+  document.getElementById('edit-j-fecha').value = j.fecha;
+  document.getElementById('edit-j-km-ini').value = j.kmIni||'';
+  document.getElementById('edit-j-km-fin').value = j.kmFin||'';
+  document.getElementById('edit-j-ganancia').value = j.ganancia||'';
+  document.getElementById('edit-j-propinas').value = j.propinas||'';
+  document.getElementById('edit-j-zona').value = j.zona||'';
+  document.getElementById('edit-j-tag-cabify').value = j.tagCabify||'';
+  document.getElementById('edit-j-tag-propio').value = j.tagPropio||'';
+  document.getElementById('edit-j-gastos').value = j.gastos||'';
+  document.getElementById('edit-j-categoria').value = j.categoria||'taxi';
+  document.getElementById('edit-j-notas').value = j.notas||'';
+  abrirModal('modal-jornada');
+}
+function guardarEdicionJornada() {
+  const idx = parseInt(document.getElementById('edit-j-idx').value);
+  const j = datos.jornadas[idx];
+  j.fecha = document.getElementById('edit-j-fecha').value;
+  j.kmIni = parseFloat(document.getElementById('edit-j-km-ini').value)||0;
+  j.kmFin = parseFloat(document.getElementById('edit-j-km-fin').value)||0;
+  j.ganancia = parseFloat(document.getElementById('edit-j-ganancia').value)||0;
+  j.propinas = parseFloat(document.getElementById('edit-j-propinas').value)||0;
+  j.zona = parseFloat(document.getElementById('edit-j-zona').value)||0;
+  j.tagCabify = parseFloat(document.getElementById('edit-j-tag-cabify').value)||0;
+  j.tagPropio = parseFloat(document.getElementById('edit-j-tag-propio').value)||0;
+  j.gastos = parseFloat(document.getElementById('edit-j-gastos').value)||0;
+  j.categoria = document.getElementById('edit-j-categoria').value;
+  j.notas = document.getElementById('edit-j-notas').value;
+  j.kmRecorridos = j.kmFin > j.kmIni ? j.kmFin - j.kmIni : 0;
+  j.totalBruto = j.ganancia + j.propinas + j.zona;
+  guardar();
+  cerrarModal('modal-jornada');
+  toast('✅ Jornada actualizada');
+  renderHistorial();
+}
+function eliminarJornada(idx) {
+  if (!confirm('¿Eliminar esta jornada?')) return;
+  datos.jornadas.splice(idx,1);
+  guardar();
+  toast('🗑️ Jornada eliminada','var(--red)');
+  renderHistorial();
+}
+
+// ========== COMBUSTIBLE ==========
+function guardarCombustible() {
+  const c = {
+    fecha: document.getElementById('c-fecha').value,
+    km: parseFloat(document.getElementById('c-km').value)||0,
+    litros: parseFloat(document.getElementById('c-litros').value)||0,
+    precio: parseFloat(document.getElementById('c-precio').value)||0,
+    estacion: document.getElementById('c-estacion').value,
+  };
+  if (!c.litros||!c.precio) { toast('Completa litros y precio','var(--red)'); return; }
+  c.precioPorLitro = Math.round(c.precio/c.litros);
+  datos.combustible.push(c);
+  guardar();
+  toast('⛽ Carga guardada');
+  ['c-litros','c-precio','c-estacion'].forEach(id => document.getElementById(id).value='');
+  renderCombLista();
+}
+function renderCombLista() {
+  const lista = document.getElementById('comb-lista');
+  if (!datos.combustible.length) { lista.innerHTML='<div class="empty"><div class="empty-icon">⛽</div>Sin cargas registradas</div>'; calcRendimiento(); return; }
+  const sorted = [...datos.combustible].map((c,i)=>({...c,_i:i})).sort((a,b)=>b.fecha.localeCompare(a.fecha));
+  lista.innerHTML = sorted.slice(0,15).map(c=>`
+    <div class="list-item">
+      <div class="list-item-left">
+        <div class="list-item-title">${c.estacion||'Sin nombre'} · ${c.litros}L</div>
+        <div class="list-item-sub">${c.fecha} · $${(c.precioPorLitro||0).toLocaleString('es-CL')}/L · ${(c.km||0).toLocaleString('es-CL')} km</div>
+      </div>
+      <div class="list-item-right">
+        <div class="list-item-amount red">$${(c.precio||0).toLocaleString('es-CL')}</div>
+        <div class="list-item-actions">
+          <button class="btn-edit" onclick="editarComb(${c._i})">✏️</button>
+          <button class="btn-danger" onclick="eliminarComb(${c._i})">🗑️</button>
+        </div>
+      </div>
+    </div>`).join('');
+  calcRendimiento();
+}
+function calcRendimiento() {
+  const total = datos.combustible.reduce((s,c)=>s+(c.precio||0),0);
+  document.getElementById('comb-total').textContent = '$'+total.toLocaleString('es-CL');
+  if (datos.combustible.length>=2) {
+    const s=[...datos.combustible].sort((a,b)=>a.km-b.km);
+    const totL=s.reduce((x,c)=>x+(c.litros||0),0);
+    const totKm=s[s.length-1].km-s[0].km;
+    if (totKm>0&&totL>0) {
+      const kml=(totKm/totL).toFixed(1);
+      document.getElementById('comb-kmL').textContent=kml;
+      const cpm=Math.round(total/totKm);
+      document.getElementById('comb-cpm').textContent='$'+cpm.toLocaleString('es-CL')+'/km';
+    }
+  }
+}
+function editarComb(idx) {
+  const c=datos.combustible[idx];
+  document.getElementById('edit-c-idx').value=idx;
+  document.getElementById('edit-c-fecha').value=c.fecha;
+  document.getElementById('edit-c-km').value=c.km||'';
+  document.getElementById('edit-c-litros').value=c.litros||'';
+  document.getElementById('edit-c-precio').value=c.precio||'';
+  document.getElementById('edit-c-estacion').value=c.estacion||'';
+  abrirModal('modal-comb');
+}
+function guardarEdicionComb() {
+  const idx=parseInt(document.getElementById('edit-c-idx').value);
+  const c=datos.combustible[idx];
+  c.fecha=document.getElementById('edit-c-fecha').value;
+  c.km=parseFloat(document.getElementById('edit-c-km').value)||0;
+  c.litros=parseFloat(document.getElementById('edit-c-litros').value)||0;
+  c.precio=parseFloat(document.getElementById('edit-c-precio').value)||0;
+  c.estacion=document.getElementById('edit-c-estacion').value;
+  c.precioPorLitro=Math.round(c.precio/c.litros);
+  guardar(); cerrarModal('modal-comb'); toast('✅ Carga actualizada'); renderCombLista(); renderHistorial();
+}
+function eliminarComb(idx) {
+  if (!confirm('¿Eliminar esta carga?')) return;
+  datos.combustible.splice(idx,1); guardar(); toast('🗑️ Eliminado','var(--red)'); renderCombLista(); renderHistorial();
+}
+
+// ========== MANTENCIÓN ==========
+function actualizarKM() {
+  const km=parseFloat(document.getElementById('mant-km-actual').value)||204000;
+  datos.config.kmActual=km; guardar(); actualizarBadgeKM(); toast('✅ KM actualizado'); renderMantenciones();
+}
+function guardarConfig() {
+  guardar(); toast('💾 Config guardada'); renderResumen();
+}
+function registrarMantencion() {
+  const m={
+    tipo:document.getElementById('mant-tipo').value,
+    kmRealizado:parseFloat(document.getElementById('mant-km-realizado').value)||datos.config.kmActual,
+    costo:parseFloat(document.getElementById('mant-costo').value)||0,
+    fecha:document.getElementById('mant-fecha').value,
+    notas:document.getElementById('mant-notas').value,
+  };
+  datos.mantenciones.push(m);
+  if (!datos.aportes) datos.aportes = [];
+// Recalcular fondo desde aportes reales para evitar valores residuales
+datos.config.fondoActual = datos.aportes.reduce((s,a)=>s+(a.mantencion||0),0);
+refrescarMantBase();
+  if (m.costo&&datos.config.fondoActual>=m.costo) {
+    datos.config.fondoActual-=m.costo;
+    // fondo manejado desde Aportes
+    toast('✅ Mantención registrada (descontado del fondo)');
+  } else { toast('✅ Mantención registrada'); }
+  guardar(); renderMantenciones();
+  ['mant-km-realizado','mant-costo','mant-notas'].forEach(id=>document.getElementById(id).value='');
+}
+function editarMant(idx) {
+  const m=datos.mantenciones[idx];
+  document.getElementById('edit-m-idx').value=idx;
+  document.getElementById('edit-m-tipo').value=m.tipo;
+  document.getElementById('edit-m-km').value=m.kmRealizado||'';
+  document.getElementById('edit-m-costo').value=m.costo||'';
+  document.getElementById('edit-m-fecha').value=m.fecha||'';
+  document.getElementById('edit-m-notas').value=m.notas||'';
+  abrirModal('modal-mant');
+}
+function guardarEdicionMant() {
+  const idx=parseInt(document.getElementById('edit-m-idx').value);
+  const m=datos.mantenciones[idx];
+  m.tipo=document.getElementById('edit-m-tipo').value;
+  m.kmRealizado=parseFloat(document.getElementById('edit-m-km').value)||0;
+  m.costo=parseFloat(document.getElementById('edit-m-costo').value)||0;
+  m.fecha=document.getElementById('edit-m-fecha').value;
+  m.notas=document.getElementById('edit-m-notas').value;
+  if (!datos.aportes) datos.aportes = [];
+// Recalcular fondo desde aportes reales para evitar valores residuales
+datos.config.fondoActual = datos.aportes.reduce((s,a)=>s+(a.mantencion||0),0);
+refrescarMantBase(); guardar(); cerrarModal('modal-mant'); toast('✅ Mantención actualizada'); renderHistorial(); renderMantenciones();
+}
+function eliminarMant(idx) {
+  if (!confirm('¿Eliminar esta mantención?')) return;
+  datos.mantenciones.splice(idx,1); if (!datos.aportes) datos.aportes = [];
+// Recalcular fondo desde aportes reales para evitar valores residuales
+datos.config.fondoActual = datos.aportes.reduce((s,a)=>s+(a.mantencion||0),0);
+refrescarMantBase(); guardar(); toast('🗑️ Eliminado','var(--red)'); renderHistorial(); renderMantenciones();
+}
+function renderMantenciones() {
+  const km=datos.config.kmActual;
+  document.getElementById('mant-lista').innerHTML=MANT_BASE.map(m=>{
+    const ultimo=m.ultimoKmReal||m.ultimoKm||(km-m.intervalo*0.5);
+    const prox=ultimo+m.intervalo;
+    const restante=prox-km;
+    const pct=Math.max(0,Math.min(100,((km-ultimo)/m.intervalo)*100));
+    const semanas=Math.max(0,Math.round(restante/1500));
+    let estado='ok',badge='badge-ok',badgeText=`✅ ~${semanas}sem`;
+    if (pct>=100){estado='urgent';badge='badge-urgent';badgeText='🚨 Vencido';}
+    else if(pct>=75){estado='warn';badge='badge-warn';badgeText=`⚠️ ${semanas}sem`;}
+    const barColor=pct>=100?'var(--red)':pct>=75?'var(--yellow)':'var(--green)';
+    return `<div class="mant-item ${estado}">
+      <div class="mant-header">
+        <div><div class="mant-name">${m.nombre}</div><div class="mant-km">${m.descripcion}</div></div>
+        <div class="mant-badge ${badge}">${badgeText}</div>
+      </div>
+      <div class="progress-wrap" style="margin-top:10px">
+        <div class="progress-label">
+          <span style="font-size:11px;color:var(--muted)">Último: ${ultimo.toLocaleString('es-CL')} km</span>
+          <span style="font-size:11px;color:var(--muted)">Próximo: ${prox.toLocaleString('es-CL')} km</span>
+        </div>
+        <div class="progress-bar-bg"><div class="progress-bar" style="width:${pct}%;background:${barColor}"></div></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:8px">
+        <span style="font-size:12px;color:var(--muted)">Costo estimado</span>
+        <span style="font-size:13px;font-weight:700;color:var(--accent)">$${m.costo.toLocaleString('es-CL')}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ========== APORTES ==========
+function guardarAporte() {
+  const a = {
+    fecha: document.getElementById('ap-fecha').value,
+    mantencion: parseFloat(document.getElementById('ap-mantencion').value)||0,
+    arriendo: parseFloat(document.getElementById('ap-arriendo').value)||0,
+    notas: document.getElementById('ap-notas').value,
+  };
+  if (!a.fecha||(!a.mantencion&&!a.arriendo)) { toast('Completa fecha y al menos un monto','var(--red)'); return; }
+  datos.aportes.push(a);
+  // Actualizar fondo mantención config
+  datos.config.fondoActual = (datos.config.fondoActual||0) + a.mantencion;
+  // fondo manejado desde Aportes
+  guardar();
+  toast('✅ Aporte registrado');
+  ['ap-mantencion','ap-arriendo','ap-notas'].forEach(id=>document.getElementById(id).value='');
+  renderAportes();
+  renderResumen();
+}
+
+function renderAportes() {
+  const mes = new Date().toISOString().slice(0,7);
+  const aportes = (datos.aportes||[]).filter(a=>a.fecha?.startsWith(mes));
+  const totalMant = aportes.reduce((s,a)=>s+(a.mantencion||0),0);
+  const totalArr = aportes.reduce((s,a)=>s+(a.arriendo||0),0);
+  const metaMant = 128000;
+  const metaArr = 400000;
+  const pMant = Math.min(100,(totalMant/metaMant)*100);
+  const pArr = Math.min(100,(totalArr/metaArr)*100);
+  const colorMant = pMant>=100?'var(--green)':pMant>=60?'var(--yellow)':'var(--accent)';
+  const colorArr = pArr>=100?'var(--green)':pArr>=60?'var(--yellow)':'var(--red)';
+
+  const elFM = document.getElementById('ap-fondo-mant');
+  const elFA = document.getElementById('ap-fondo-arriendo');
+  const elBM = document.getElementById('ap-bar-mant');
+  const elBA = document.getElementById('ap-bar-arriendo');
+  if(elFM) elFM.textContent='$'+totalMant.toLocaleString('es-CL');
+  if(elFA) elFA.textContent='$'+totalArr.toLocaleString('es-CL');
+  if(elBM) { elBM.style.width=pMant+'%'; elBM.style.background=colorMant; }
+  if(elBA) { elBA.style.width=pArr+'%'; elBA.style.background=colorArr; }
+
+  const lista = document.getElementById('ap-lista');
+  if (!lista) return;
+  const all = [...(datos.aportes||[])].map((a,i)=>({...a,_i:i})).filter(a=>a.fecha?.startsWith(mes)).sort((x,y)=>y.fecha.localeCompare(x.fecha));
+  if (!all.length) { lista.innerHTML='<div class="empty"><div class="empty-icon">💰</div>Sin aportes este mes</div>'; return; }
+  lista.innerHTML = all.map(a=>`
+    <div class="list-item">
+      <div class="list-item-left">
+        <div class="list-item-title">${a.fecha}</div>
+        <div class="list-item-sub">🔧 $${(a.mantencion||0).toLocaleString('es-CL')} mantención · 🏠 $${(a.arriendo||0).toLocaleString('es-CL')} arriendo${a.notas?' · '+a.notas:''}</div>
+      </div>
+      <div class="list-item-right">
+        <div class="list-item-amount green">$${((a.mantencion||0)+(a.arriendo||0)).toLocaleString('es-CL')}</div>
+        <div class="list-item-actions">
+          <button class="btn-danger" onclick="eliminarAporte(${a._i})">🗑️</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function eliminarAporte(idx) {
+  if (!confirm('¿Eliminar este aporte?')) return;
+  const a = datos.aportes[idx];
+  datos.config.fondoActual = Math.max(0,(datos.config.fondoActual||0)-(a.mantencion||0));
+  datos.aportes.splice(idx,1);
+  guardar(); toast('🗑️ Eliminado','var(--red)'); renderAportes(); renderResumen();
+}
+
+// ========== RESUMEN ==========
+function renderResumen() {
+  const mes=new Date().toISOString().slice(0,7);
+  const jornadas=datos.jornadas.filter(j=>j.fecha?.startsWith(mes));
+  const comb=datos.combustible.filter(c=>c.fecha?.startsWith(mes));
+  const ganancia=jornadas.reduce((s,j)=>s+(j.ganancia||0),0);
+  const propinas=jornadas.reduce((s,j)=>s+(j.propinas||0),0);
+  const zona=jornadas.reduce((s,j)=>s+(j.zona||0),0);
+  const tagCabify=jornadas.reduce((s,j)=>s+(j.tagCabify||0),0);
+  const tagPropio=jornadas.reduce((s,j)=>s+(j.tagPropio||0),0);
+  const tagTotal=tagCabify+tagPropio;
+  const combustibleTotal=comb.reduce((s,c)=>s+(c.precio||0),0);
+  const gastosTotal=jornadas.reduce((s,j)=>s+(j.gastos||0),0);
+  const mes2=new Date().toISOString().slice(0,7);
+  const arriendoMes=(datos.aportes||[]).filter(a=>a.fecha?.startsWith(mes2)).reduce((s,a)=>s+(a.arriendo||0),0);
+  const neto=ganancia+propinas+zona-combustibleTotal-tagPropio-gastosTotal-arriendoMes;
+  const kmR=jornadas.reduce((s,j)=>s+(j.kmRecorridos||0),0);
+  document.getElementById('res-ganancia').textContent='$'+ganancia.toLocaleString('es-CL');
+  document.getElementById('res-tag').textContent='$'+tagTotal.toLocaleString('es-CL'); // Cabify + propios
+  document.getElementById('res-comb').textContent='$'+combustibleTotal.toLocaleString('es-CL');
+  document.getElementById('res-neto').textContent='$'+neto.toLocaleString('es-CL');
+  document.getElementById('res-propinas').textContent='$'+propinas.toLocaleString('es-CL');
+  document.getElementById('res-zona').textContent='$'+zona.toLocaleString('es-CL');
+  document.getElementById('res-dias').textContent=jornadas.length;
+  document.getElementById('res-km').textContent=kmR.toLocaleString('es-CL')+' km';
+  document.getElementById('res-promedio').textContent=jornadas.length?'$'+Math.round(neto/jornadas.length).toLocaleString('es-CL'):'$0';
+  // Desglose final
+  // Ahorro mantención = lo que realmente aportó este mes en pestaña Aportes
+  const mes3=new Date().toISOString().slice(0,7);
+  const ahorroMantReal=(datos.aportes||[]).filter(a=>a.fecha?.startsWith(mes3)).reduce((s,a)=>s+(a.mantencion||0),0);
+  const tuyo=neto-ahorroMantReal;
+  document.getElementById('res-neto2').textContent='$'+neto.toLocaleString('es-CL');
+  const elGastos=document.getElementById('res-gastos'); if(elGastos) elGastos.textContent='$'+gastosTotal.toLocaleString('es-CL');
+  const elArr=document.getElementById('res-arriendo'); if(elArr) elArr.textContent='$'+arriendoMes.toLocaleString('es-CL');
+  document.getElementById('res-ahorro-mant').textContent='$'+ahorroMantReal.toLocaleString('es-CL');
+  document.getElementById('res-tuyo').textContent='$'+tuyo.toLocaleString('es-CL');
+  if (datos.combustible.length>=2) {
+    const s=[...datos.combustible].sort((a,b)=>a.km-b.km);
+    const tL=s.reduce((x,c)=>x+(c.litros||0),0);
+    const tKm=s[s.length-1].km-s[0].km;
+    if (tKm>0&&tL>0) document.getElementById('res-rendimiento').innerHTML=`<div style="font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--accent)">${(tKm/tL).toFixed(1)}</div><div style="color:var(--muted);font-size:14px">km / litro</div>`;
+  }
+  const fondo=datos.config.fondoActual||0;
+  const metaFondo=128000;
+  const pF=Math.min(100,(fondo/metaFondo)*100);
+  const bC=pF>=100?'var(--green)':pF>=60?'var(--yellow)':'var(--red)';
+  document.getElementById('res-fondo').innerHTML=`
+    <div class="progress-label"><span style="font-size:14px;font-weight:700;color:var(--green)">$${fondo.toLocaleString('es-CL')}</span><span style="font-size:12px;color:var(--muted)">Meta: $128.000/mes</span></div>
+    <div class="progress-bar-bg" style="height:12px"><div class="progress-bar" style="width:${pF}%;background:${bC}"></div></div>
+    <div style="font-size:12px;color:var(--muted);margin-top:6px">Registra tus aportes semanales en la pestaña 💰 Aportes</div>`;
+}
+
+// ========== HISTORIAL ==========
+function renderHistorial() {
+  const mes=document.getElementById('hist-mes').value;
+  const jornadas=[...datos.jornadas].map((j,i)=>({...j,_i:i})).filter(j=>j.fecha?.startsWith(mes)).sort((a,b)=>b.fecha.localeCompare(a.fecha));
+  const mants=[...datos.mantenciones].map((m,i)=>({...m,_i:i})).filter(m=>m.fecha?.startsWith(mes)).sort((a,b)=>b.fecha.localeCompare(a.fecha));
+  const combs=[...datos.combustible].map((c,i)=>({...c,_i:i})).filter(c=>c.fecha?.startsWith(mes)).sort((a,b)=>b.fecha.localeCompare(a.fecha));
+
+  const jEl=document.getElementById('hist-jornadas');
+  jEl.innerHTML=!jornadas.length?'<div class="empty"><div class="empty-icon">📋</div>Sin jornadas</div>':
+    jornadas.map(j=>`<div class="list-item">
+      <div class="list-item-left">
+        <div class="list-item-title">${j.fecha} · ${j.categoria}</div>
+        <div class="list-item-sub">🤝$${(j.propinas||0).toLocaleString('es-CL')} · ⚡$${(j.zona||0).toLocaleString('es-CL')} · 🟡$${(j.tagCabify||0).toLocaleString('es-CL')} · 🔴$${(j.tagPropio||0).toLocaleString('es-CL')} · 🛒$${(j.gastos||0).toLocaleString('es-CL')} · ${j.kmRecorridos||0}km</div>
+        ${j.notas?`<div class="list-item-sub" style="color:var(--muted);font-style:italic">${j.notas}</div>`:''}
+      </div>
+      <div class="list-item-right">
+        <div class="list-item-amount green">$${(j.ganancia||0).toLocaleString('es-CL')}</div>
+        <div class="list-item-actions">
+          <button class="btn-edit" onclick="editarJornada(${j._i})">✏️</button>
+          <button class="btn-danger" onclick="eliminarJornada(${j._i})">🗑️</button>
+        </div>
+      </div>
+    </div>`).join('');
+
+  const mEl=document.getElementById('hist-mantenciones');
+  mEl.innerHTML=!mants.length?'<div class="empty"><div class="empty-icon">🔧</div>Sin mantenciones</div>':
+    mants.map(m=>`<div class="list-item">
+      <div class="list-item-left">
+        <div class="list-item-title">${m.tipo} · ${(m.kmRealizado||0).toLocaleString('es-CL')} km</div>
+        <div class="list-item-sub">${m.fecha}${m.notas?' · '+m.notas:''}</div>
+      </div>
+      <div class="list-item-right">
+        <div class="list-item-amount red">$${(m.costo||0).toLocaleString('es-CL')}</div>
+        <div class="list-item-actions">
+          <button class="btn-edit" onclick="editarMant(${m._i})">✏️</button>
+          <button class="btn-danger" onclick="eliminarMant(${m._i})">🗑️</button>
+        </div>
+      </div>
+    </div>`).join('');
+
+  const cEl=document.getElementById('hist-combustible');
+  cEl.innerHTML=!combs.length?'<div class="empty"><div class="empty-icon">⛽</div>Sin cargas</div>':
+    combs.map(c=>`<div class="list-item">
+      <div class="list-item-left">
+        <div class="list-item-title">${c.estacion||'Sin nombre'} · ${c.litros}L</div>
+        <div class="list-item-sub">${c.fecha} · $${(c.precioPorLitro||0).toLocaleString('es-CL')}/L</div>
+      </div>
+      <div class="list-item-right">
+        <div class="list-item-amount red">$${(c.precio||0).toLocaleString('es-CL')}</div>
+        <div class="list-item-actions">
+          <button class="btn-edit" onclick="editarComb(${c._i})">✏️</button>
+          <button class="btn-danger" onclick="eliminarComb(${c._i})">🗑️</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+// ========== RESPALDO ==========
+function respaldarDatos() {
+  const json=JSON.stringify(datos, null, 2);
+  const blob=new Blob([json],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url; a.download='mitaxipro_respaldo.json'; a.click();
+  URL.revokeObjectURL(url);
+  toast('✅ Respaldo guardado');
+}
+function restaurarDatos(event) {
+  const file=event.target.files[0];
+  if (!file) return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try {
+      const d=JSON.parse(e.target.result);
+      if (!d.jornadas&&!d.combustible) { toast('Archivo inválido','var(--red)'); return; }
+      datos=d;
+      if (!datos.config) datos.config={kmActual:202512,fondoActual:0};
+      if (datos.config.fondoActual === undefined) datos.config.fondoActual = 0;
+      guardar(); if (!datos.aportes) datos.aportes = [];
+// Recalcular fondo desde aportes reales para evitar valores residuales
+datos.config.fondoActual = datos.aportes.reduce((s,a)=>s+(a.mantencion||0),0);
+refrescarMantBase();
+      document.getElementById('mant-km-actual').value=datos.config.kmActual;
+      // ahorro manejado desde pestaña Aportes
+      // fondo manejado desde Aportes
+      actualizarBadgeKM();
+      renderResumen(); renderMantenciones(); renderHistorial();
+      toast('✅ Datos restaurados');
+    } catch(err){ toast('Error al leer archivo','var(--red)'); }
+  };
+  reader.readAsText(file);
+  event.target.value='';
+}
+
+// ========== EXCEL ==========
+function exportarExcel() {
+  const wb=XLSX.utils.book_new();
+  const jData=[['Fecha','KM Ini','KM Fin','KM Recorridos','Ganancias','Propinas','Extras y Suplementos','Peajes Cabify','Peajes Propios','Gastos Operacionales','Total Bruto','Categoría','Notas']];
+  datos.jornadas.forEach(j=>jData.push([j.fecha,j.kmIni,j.kmFin,j.kmRecorridos,j.ganancia,j.propinas,j.zona,j.tagCabify||0,j.tagPropio||0,j.gastos||0,j.totalBruto,j.categoria,j.notas]));
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(jData),'Jornadas');
+  const cData=[['Fecha','KM','Litros','Precio Total','$/Litro','Estación']];
+  datos.combustible.forEach(c=>cData.push([c.fecha,c.km,c.litros,c.precio,c.precioPorLitro,c.estacion]));
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(cData),'Combustible');
+  const mData=[['Fecha','Tipo','KM Realizado','Costo','Notas']];
+  datos.mantenciones.forEach(m=>mData.push([m.fecha,m.tipo,m.kmRealizado,m.costo,m.notas]));
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(mData),'Mantenciones');
+  const mes=new Date().toISOString().slice(0,7);
+  const jM=datos.jornadas.filter(j=>j.fecha?.startsWith(mes));
+  const cM=datos.combustible.filter(c=>c.fecha?.startsWith(mes));
+  const rData=[
+    ['MiTaxiPro — Resumen',mes],[],
+    ['Concepto','Monto'],
+    ['Ganancias Cabify',jM.reduce((s,j)=>s+(j.ganancia||0),0)],
+    ['Propinas',jM.reduce((s,j)=>s+(j.propinas||0),0)],
+    ['Extras y suplementos',jM.reduce((s,j)=>s+(j.zona||0),0)],
+    ['Peajes Cabify (apartar)',jM.reduce((s,j)=>s+(j.tagCabify||0),0)],
+    ['Peajes propios (restados)',jM.reduce((s,j)=>s+(j.tagPropio||0),0)],
+    ['Total TAG a pagar',jM.reduce((s,j)=>s+(j.tagCabify||0)+(j.tagPropio||0),0)],
+    ['Gastos operacionales mes',jM.reduce((s,j)=>s+(j.gastos||0),0)],
+    ['Ahorro mantención mes',(datos.config.ahorroSemanal||32000)*4],
+    ['LO QUE ES TUYO',jM.reduce((s,j)=>s+(j.ganancia||0)+(j.propinas||0)+(j.zona||0),0) - datos.combustible.filter(c=>c.fecha?.startsWith(new Date().toISOString().slice(0,7))).reduce((s,c)=>s+(c.precio||0),0) - jM.reduce((s,j)=>s+(j.tagPropio||0),0) - (datos.config.ahorroSemanal||32000)*4],
+    ['Combustible (gasto)',cM.reduce((s,c)=>s+(c.precio||0),0)],
+    ['Fondo mantención acumulado',datos.config.fondoActual],
+    ['Días trabajados',jM.length],
+    ['KM recorridos',jM.reduce((s,j)=>s+(j.kmRecorridos||0),0)],
+    ['KM actual vehículo',datos.config.kmActual],
+  ];
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(rData),'Resumen');
+  const aData=[['Fecha','Mantención','Arriendo','Total','Notas']];
+  (datos.aportes||[]).forEach(a=>aData.push([a.fecha,a.mantencion||0,a.arriendo||0,(a.mantencion||0)+(a.arriendo||0),a.notas]));
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(aData),'Aportes');
+  XLSX.writeFile(wb,`MiTaxiPro_${mes}.xlsx`);
+  toast('📊 Excel exportado');
+}
+
+// ========== LIMPIAR ==========
+function limpiarTodo() {
+  if (confirm('¿Seguro? Esto borrará TODOS los datos. Haz un respaldo primero.')) {
+    localStorage.removeItem('mitaxipro'); location.reload();
+  }
+}
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    const swCode = atob('Y29uc3QgQ0FDSEUgPSAnbWl0YXhpcHJvLXYxJzsKY29uc3QgRklMRVMgPSBbCiAgJy9jYWJpZnktZ2VzdG9yLmh0bWwnLAogICcvbWFuaWZlc3QuanNvbicKXTsKCnNlbGYuYWRkRXZlbnRMaXN0ZW5lcignaW5zdGFsbCcsIGUgPT4gewogIGUud2FpdFVudGlsKAogICAgY2FjaGVzLm9wZW4oQ0FDSEUpLnRoZW4oYyA9PiBjLmFkZEFsbChGSUxFUykpCiAgKTsKICBzZWxmLnNraXBXYWl0aW5nKCk7Cn0pOwoKc2VsZi5hZGRFdmVudExpc3RlbmVyKCdhY3RpdmF0ZScsIGUgPT4gewogIGUud2FpdFVudGlsKAogICAgY2FjaGVzLmtleXMoKS50aGVuKGtleXMgPT4KICAgICAgUHJvbWlzZS5hbGwoa2V5cy5maWx0ZXIoayA9PiBrICE9PSBDQUNIRSkubWFwKGsgPT4gY2FjaGVzLmRlbGV0ZShrKSkpCiAgICApCiAgKTsKICBzZWxmLmNsaWVudHMuY2xhaW0oKTsKfSk7CgpzZWxmLmFkZEV2ZW50TGlzdGVuZXIoJ2ZldGNoJywgZSA9PiB7CiAgZS5yZXNwb25kV2l0aCgKICAgIGNhY2hlcy5tYXRjaChlLnJlcXVlc3QpLnRoZW4ociA9PiByIHx8IGZldGNoKGUucmVxdWVzdCkuY2F0Y2goKCkgPT4gY2FjaGVzLm1hdGNoKCcvY2FiaWZ5LWdlc3Rvci5odG1sJykpKQogICk7Cn0pOwo=');
+    const blob = new Blob([swCode], {type: 'application/javascript'});
+    const swUrl = URL.createObjectURL(blob);
+    navigator.serviceWorker.register(swUrl)
+      .then(r => console.log('SW registrado'))
+      .catch(e => console.log('SW error', e));
+  });
+}
+</script>
+</body>
+</html>
