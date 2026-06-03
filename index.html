@@ -871,9 +871,16 @@ function guardarEdicionJornada() {
 function eliminarJornada(idx) {
   if (!confirm('¿Eliminar esta jornada?')) return;
   datos.jornadas.splice(idx,1);
+  // Recalcular KM actual desde el máximo de jornadas restantes
+  const maxKm = datos.jornadas.reduce((m,j)=>Math.max(m,j.kmFin||0), datos.config.kmActual);
+  if (maxKm !== datos.config.kmActual) {
+    datos.config.kmActual = maxKm;
+    actualizarBadgeKM();
+  }
   guardar();
   toast('🗑️ Jornada eliminada','var(--red)');
   renderHistorial();
+  renderResumen();
 }
 
 // ========== COMBUSTIBLE ==========
