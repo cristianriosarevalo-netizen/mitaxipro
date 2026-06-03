@@ -923,16 +923,14 @@ function renderCombLista() {
 function calcRendimiento() {
   const total = datos.combustible.reduce((s,c)=>s+(c.precio||0),0);
   document.getElementById('comb-total').textContent = '$'+total.toLocaleString('es-CL');
-  if (datos.combustible.length>=2) {
-    const s=[...datos.combustible].sort((a,b)=>a.km-b.km);
-    const totL=s.reduce((x,c)=>x+(c.litros||0),0);
-    const totKm=s[s.length-1].km-s[0].km;
-    if (totKm>0&&totL>0) {
-      const kml=(totKm/totL).toFixed(1);
-      document.getElementById('comb-kmL').textContent=kml;
-      const cpm=Math.round(total/totKm);
-      document.getElementById('comb-cpm').textContent='$'+cpm.toLocaleString('es-CL')+'/km';
-    }
+  // Calcular rendimiento desde KM reales de jornadas vs litros cargados
+  const totalKmJornadas = datos.jornadas.reduce((s,j)=>s+(j.kmRecorridos||0),0);
+  const totalLitros = datos.combustible.reduce((s,c)=>s+(c.litros||0),0);
+  if (totalKmJornadas>0 && totalLitros>0) {
+    const kml=(totalKmJornadas/totalLitros).toFixed(1);
+    document.getElementById('comb-kmL').textContent=kml;
+    const cpm=Math.round(total/totalKmJornadas);
+    document.getElementById('comb-cpm').textContent='$'+cpm.toLocaleString('es-CL')+'/km';
   }
 }
 function editarComb(idx) {
@@ -1156,11 +1154,15 @@ function renderResumen() {
   const elArr=document.getElementById('res-arriendo'); if(elArr) elArr.textContent='$'+arriendoMes.toLocaleString('es-CL');
   document.getElementById('res-ahorro-mant').textContent='$'+ahorroMantReal.toLocaleString('es-CL');
   document.getElementById('res-tuyo').textContent='$'+tuyo.toLocaleString('es-CL');
-  if (datos.combustible.length>=2) {
-    const s=[...datos.combustible].sort((a,b)=>a.km-b.km);
-    const tL=s.reduce((x,c)=>x+(c.litros||0),0);
-    const tKm=s[s.length-1].km-s[0].km;
-    if (tKm>0&&tL>0) document.getElementById('res-rendimiento').innerHTML=`<div style="font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--accent)">${(tKm/tL).toFixed(1)}</div><div style="color:var(--muted);font-size:14px">km / litro</div>`;
+  // Rendimiento desde KM reales de jornadas vs litros cargados
+  const totalKmR = datos.jornadas.reduce((s,j)=>s+(j.kmRecorridos||0),0);
+  const totalLitrosR = datos.combustible.reduce((s,c)=>s+(c.litros||0),0);
+  if (totalKmR>0 && totalLitrosR>0) {
+    const kmlR=(totalKmR/totalLitrosR).toFixed(1);
+    document.getElementById('res-rendimiento').innerHTML=`
+      <div style="font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--accent)">${kmlR}</div>
+      <div style="color:var(--muted);font-size:14px">km / litro</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px">Basado en ${totalKmR.toLocaleString('es-CL')} km recorridos y ${totalLitrosR.toFixed(1)} litros cargados</div>`;
   }
   const fondo=datos.config.fondoActual||0;
   const metaFondo=128000;
